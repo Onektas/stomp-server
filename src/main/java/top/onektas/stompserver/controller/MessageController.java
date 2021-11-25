@@ -27,6 +27,11 @@ public class MessageController {
      */
     @MessageMapping("/test")
     public void sendTopicMessage(MessageBody messageBody) {
+        // 将接受的客户端消息传入MysqlController进行处理
+        String result = new MysqlController().mysqlConntroller(messageBody.getContent());
+        System.out.println(result);
+        messageBody.setContent(result);
+
         // 将消息发送到 WebSocket 配置类中配置的代理中（/topic）进行消息转发
         simpMessageSendingOperations.convertAndSend(messageBody.getDestination(), messageBody);
     }
