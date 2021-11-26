@@ -44,7 +44,7 @@ public class MysqlController {
             ResultSet rs = stmt.executeQuery(sql);
 
             // 将查询结果转换为String
-            result = new ResultSetTranslator().resultsetTranslator(rs);
+            result = new ResultSetTranslator().resultSetToJson(rs);
 
             // 完成后关闭
             rs.close();

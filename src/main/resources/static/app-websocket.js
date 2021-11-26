@@ -30,7 +30,17 @@ function subscribeSocket() {
     // 执行订阅消息
     stompClient.subscribe(SUBSCRIBE, function (responseBody) {
         var receiveMessage = JSON.parse(responseBody.body);
-        $("#information").append("<tr><td>" + receiveMessage.content + "</td></tr>");
+        console.log(receiveMessage);
+
+        var Message = receiveMessage.content;
+        Message = JSON.parse(Message);
+        console.log(Message);
+
+        var i = "";
+        for (i in Message) {
+            $("#information").append("<tr><td>" + Message[i].xuewei + "</td></tr>");
+        }
+        ;
     });
 }
 
