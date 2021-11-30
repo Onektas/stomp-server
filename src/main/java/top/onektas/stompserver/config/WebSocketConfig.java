@@ -7,7 +7,7 @@ import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
 
 /**
- * WebSocket 配置
+ * WebSocket 配置类
  *
  * @onektas
  */
@@ -22,7 +22,9 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
      */
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
+        // 网页端连接端点，启用跨域，启用http/https
         registry.addEndpoint("/onesocket").setAllowedOriginPatterns("*").withSockJS();
+        // uni-app端连接端点，启用跨域，启用ws/wss
         registry.addEndpoint("/onesocket-app").setAllowedOriginPatterns("*");
     }
 

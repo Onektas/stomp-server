@@ -29,13 +29,16 @@ function subscribeSocket() {
     alert("设置订阅地址为：" + SUBSCRIBE);
     // 执行订阅消息
     stompClient.subscribe(SUBSCRIBE, function (responseBody) {
+        // 转换消息为JSON
         var receiveMessage = JSON.parse(responseBody.body);
         console.log(receiveMessage);
 
+        // 转换消息主体为JSON(content的内容为JSON格式的String类型，所以需要二次转换)
         var Message = receiveMessage.content;
         Message = JSON.parse(Message);
         console.log(Message);
 
+        // 输出内容到表格
         var i = "";
         for (i in Message) {
             $("#information").append("<tr><td>" + Message[i].xuewei + "</td></tr>");

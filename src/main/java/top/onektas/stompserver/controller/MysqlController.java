@@ -5,7 +5,7 @@ import top.onektas.stompserver.tools.ResultSetTranslator;
 import java.sql.*;
 
 /**
- * Mysql查询
+ * Mysql查询类
  *
  * @onektas
  */

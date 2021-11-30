@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import top.onektas.stompserver.model.MessageBody;
 
 /**
- * 测试 Controller 类
+ * 消息 Controller 类
  *
  * @onektas
  */
@@ -27,7 +27,7 @@ public class MessageController {
      */
     @MessageMapping("/test")
     public void sendTopicMessage(MessageBody messageBody) {
-        // 将接受的客户端消息传入MysqlController进行处理
+        // 接受客户端消息并传入MysqlController类进行处理
         String result = new MysqlController().mysqlConntroller(messageBody.getContent());
         System.out.println(result);
         messageBody.setContent(result);
